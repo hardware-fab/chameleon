@@ -1,0 +1,67 @@
+module:
+  name: CpClassifier
+  config:
+    model:
+      name: ResNetTimeSeriesClassifier
+      config:
+        encoder_params:
+          encoding_size: 32
+          base_filters: 16
+          kernel_size: 64
+          stride: 1
+          groups: 1
+          n_block: 2
+          downsample_gap: 3 #1 
+          increasefilter_gap: 1
+          use_batch_norm: True
+          use_inner_do: True
+          inner_do_val: 0.45
+          use_final_do: True
+          final_do_val: 0.35
+          relu: 'normal' # 'leaky' or 'normal' or 'tanh'
+          verbose: False
+        classifier_params:
+          out_channels: 3
+    loss:
+      name: CrossEntropyLoss
+      weight: [0.25, 0.25, 0.5]
+    optimizer:
+      name: AdamW
+      config: 
+        lr: 0.001
+        weight_decay: 8e-5
+    scheduler:
+      name: OneCycleLR
+      config:
+        max_lr: 0.007
+        steps_per_epoch: 1455
+        epochs: 75
+        div_factor: 50
+        final_div_factor: 500
+      interval: step
+      monitor: valid/Accuracy
+    metrics:
+      - name: Accuracy
+        config:
+          average: macro
+          task: multiclass
+          num_classes: 3
+          multidim_average: global
+      - name: Precision
+        config:
+          average: macro
+          task: multiclass
+          num_classes: 3
+          multidim_average: global
+      - name: Recall
+        config:
+          average: macro
+          task: multiclass
+          num_classes: 3
+          multidim_average: global
+      - name: F1 
+        config:
+          average: macro
+          task: multiclass
+          num_classes: 3
+          multidim_average: global

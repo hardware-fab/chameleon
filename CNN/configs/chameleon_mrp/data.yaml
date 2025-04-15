@@ -1,0 +1,10 @@
+datamodule:
+  name: CpClassifierDataModule
+  config:
+    dataset_dir: </path/to/chameleon/mrp/dataset>
+    batch_size: 256
+    num_workers: 8
+    labels:
+      0: 0 # aes other
+      1: 1 # aes first
+      2: 2 # noise

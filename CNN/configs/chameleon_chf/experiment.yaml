@@ -1,0 +1,22 @@
+experiment:
+  name: ResNet_v1
+  log_dir:  <path/to/log_dir>
+  neptune_config_file: CNN/configs/common/neptune_configs.yaml 
+  checkpoint:
+    monitor: valid/F1
+    mode: max
+  seed: 314159
+  early_stop:
+    name: EarlyStopping
+    config:
+      monitor: valid/F1
+      patience: 10
+      mode: max
+  trainer:
+    max_epochs: 75
+    check_val_every_n_epoch: 1
+    log_every_n_steps: 4
+    limit_train_batches: 1.0
+    limit_val_batches: 1.0
+  tags:
+    - Chamaleon CHF

@@ -13,7 +13,59 @@ The Chameleon dataset is available on 🤗 [Hugging Face](https://huggingface.co
    <img src="./images/chameleon_logo.png" alt="Chameleon Logo" width="150">
 </div>
 
-## How to Download
+To run a segmentation demo, open the Jupyter Notebook `chameleon_segmentation.ipynb`.
+
+## Repository Organization
+
+The repository is organized as follows:
+
+- **`/CNN`**: Contains modules and configuration files for the Convolutional Neural Network used for segmenting the cryptographic operations.
+- **`/inference_pipeline`**: Contains functions for classifying, segmenting, and aligning cryptographic operations in a side-channel trace.
+- **`chameleon_segmentation.ipynb`**: A Jupyter Notebook for running a demo.
+
+```plaintext
+.
+├── CNN
+│   ├── build_dataset_chameleon.py
+│   ├── configs
+│   │   ├── chameleon_base
+│   │   │   ├── data.yaml
+│   │   │   ├── experiment.yaml
+│   │   │   └── module.yaml
+│   │   ├── chameleon_chf/
+│   │   ├── chameleon_dfs/
+│   │   ├── chameleon_mrp/
+│   │   ├── chameleon_rd/
+│   │   └── common
+│   │       └── neptune_configs.yaml
+│   ├── datasets
+│   │   └── cp_class_dataset.py
+│   ├── models
+│   │   ├── custom_layers.py
+│   │   ├── resnet.py
+│   │   └── resnet_time_series_classifier.py
+│   ├── modules
+│   │   ├── cp_class_datamodule.py
+│   │   └── cp_class_module.py
+│   ├── train.py
+│   └── utils
+│       ├── data.py
+│       ├── logging.py
+│       ├── module.py
+│       ├── trainer.py
+│       └── utils.py
+├── inference_pipeline
+│   ├── alignment.py
+│   ├── debug.py
+│   ├── heuristic.py
+│   ├── segmentation.py
+│   └── sliding_window_classification.py
+└── chameleon_segmentation.ipynb
+```
+
+## Dataset
+
+### How to Download
 
 Full dataset:  
 ⚠ **WARNING**: Full dataset requires more than 600 GB of space.
@@ -29,8 +81,7 @@ snapshot_download(repo_id="hardware-fab/Chameleon", repo_type="dataset", local_d
 ```
 Replace `<sub_dataset>` with `BASE`, `DFS`, `RD`, `MRP`, `CHF`.
 
-
-## Dataset Structure
+### Dataset Structure
 
 The dataset is divided per hiding countermeasure. Each file has the following structure:
 * **Data:** The data are power traces of 134,217,550 time samples.
@@ -54,6 +105,8 @@ The dataset is divided per hiding countermeasure. Each file has the following st
 ## Note
 This work is part of [1] available [online]().
 
-© 2024 hardware-fab
+This repository is protected by copyright and licensed under the [Apache-2.0 license](https://github.com/hardware-fab/chameleon/blob/main/LICENSE) file.
+
+© 2025 hardware-fab
 
 > [1] D. Galli, G. Chiari, and D. Zoni, "Chameleon: A Dataset for Segmenting and Attacking Obfuscated Power Traces in Side-Channel Analysis," in IACR Transactions on Cryptographic Hardware and Embedded Systems, 2025(3)
