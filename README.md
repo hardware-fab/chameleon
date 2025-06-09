@@ -103,7 +103,22 @@ The dataset is divided per hiding countermeasure. Each file has the following st
 > More details available on 🤗 [Hugging Face](https://huggingface.co/datasets/hardware-fab/Chameleon).
 
 ## Note
-This work is part of [1] available [online]().
+This work is part of [1] available [online](https://doi.org/10.46586/tches.v2025.i3.389-412).
+
+```bibtext
+@article{Galli_Chiari_Zoni_2025,
+    title={Chameleon: A Dataset for Segmenting and Attacking Obfuscated Power Traces in Side-Channel Analysis},
+    author={Galli, Davide and Chiari , Giuseppe and Zoni, Davide},
+    volume={2025}, 
+    number={3},
+    journal={IACR Transactions on Cryptographic Hardware and Embedded Systems},
+    year={2025},
+    month={Jun.},
+    pages={389–412},
+    DOI={10.46586/tches.v2025.i3.389-412},
+    url={https://tches.iacr.org/index.php/TCHES/article/view/12221}
+}
+```
 
 This repository is protected by copyright and licensed under the [Apache-2.0 license](https://github.com/hardware-fab/chameleon/blob/main/LICENSE) file.
 
